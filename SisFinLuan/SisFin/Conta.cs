@@ -38,10 +38,10 @@ namespace SisFin
             public List<Conta> geraContas()
             {
                 Conta _cnt1 = new Conta(1, "Salário Unicamp", "Salário recebido da UNICAMP", 1, 1);
-                Conta _cnt2 = new Conta(2, "Abastecimento Onix", "Combustivel Onix", 2, 1);
-                LstConta.Add(_cnt1);
-                LstConta.Add(_cnt2);
-                return LstConta;
+                Conta _cnt2 = new Conta(2, "Abastecimento Onix", "Combustivel Onix", 2, 0);
+                _lstConta.Add(_cnt1);
+                _lstConta.Add(_cnt2);
+                return _lstConta;
             }
 
             public List<Conta> ToList()

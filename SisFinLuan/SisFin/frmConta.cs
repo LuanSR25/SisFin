@@ -22,8 +22,18 @@ namespace SisFin
         public frmConta()
         {
             InitializeComponent();
-            lstConta = Conta.GeraContas();
+            lstConta = conta.geraContas();
             lstCategoria = (new Categoria()).GeraCategorias();
+        }
+
+        private void carregaGridConta()
+        {
+            bsConta = new BindingSource();
+            bsConta.DataSource = lstConta;
+            //bsConta.Rows.Clear();
+            dgConta.DataSource = bsConta;
+            dgConta.Refresh();
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -43,8 +53,48 @@ namespace SisFin
 
         private void frmConta_Load(object sender, EventArgs e)
         {
-            carregaComboCategoria()
+            carregaComboCategoria();
+
+            dgConta.ColumnCount = 4;
+            dgConta.AutoGenerateColumns = false;
+            dgConta.Columns[0].Width = 50;
+            dgConta.Columns[0].HeaderText = "ID";
+            dgConta.Columns[0].DataPropertyName = "Id";
+            dgConta.Columns[0].Visible = true;
+            dgConta.Columns[1].Width = 200;
+            dgConta.Columns[1].HeaderText = "NOME";
+            dgConta.Columns[1].DataPropertyName = "Nome";
+            dgConta.Columns[2].Width = 450;
+            dgConta.Columns[2].HeaderText = "DESCRIÇÃO";
+            dgConta.Columns[2].DataPropertyName = "Descricao";
+            /*dgConta.Columns[3].Width = 50;
+            dgConta.Columns[3].HeaderText = "TIPO";
+            dgConta.Columns[3].DataPropertyName = "Tipo";
+            dgConta.Columns[4].Width = 50;*/
+            dgConta.Columns[3].Width = 50;
+            dgConta.Columns[3].HeaderText = "STATUS";
+            dgConta.Columns[3].DataPropertyName = "Status";
+            dgConta.Columns[3].Visible = false;
+
+
+
+            dgConta.AllowUserToAddRows = false;
+            dgConta.AllowUserToDeleteRows = false;
+            dgConta.MultiSelect = false;
+            dgConta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            carregaGridConta();
             
+
+
+
+
+
+        }
+
+        public void GeraContas()
+        {
+
         }
         
         private void carregaComboCategoria(int id=0)
@@ -69,6 +119,28 @@ namespace SisFin
             CboCategoria.Refresh();
         }
 
+        private void dgConta_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (dgConta.RowCount > 0)
+            {
+                int _id = Convert.ToInt32(dgConta.Rows[e.RowIndex].Cells[0].Value);
+                carregaComboCategoria(_id);
+
+                txtNome.Text = dgConta.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtDescricao.Text = dgConta.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                if (Convert.ToInt16(dgConta.Rows[e.RowIndex].Cells[3].Value.ToString()) == 1)
+                    chkStatus.Checked = true;
+                else
+                    chkStatus.Checked = false;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

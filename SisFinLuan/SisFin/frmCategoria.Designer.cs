@@ -66,6 +66,7 @@ namespace SisFin
             this.grpCategoria.Size = new System.Drawing.Size(780, 179);
             this.grpCategoria.TabIndex = 0;
             this.grpCategoria.TabStop = false;
+            this.grpCategoria.Enter += new System.EventHandler(this.grpCategoria_Enter);
             // 
             // label4
             // 

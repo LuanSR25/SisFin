@@ -327,6 +327,7 @@ namespace SisFin
             this.cadMenu.Name = "cadMenu";
             this.cadMenu.Size = new System.Drawing.Size(120, 34);
             this.cadMenu.Text = "&Cadastros";
+            this.cadMenu.Click += new System.EventHandler(this.cadMenu_Click);
             // 
             // subMenuCategoria
             // 
@@ -340,6 +341,7 @@ namespace SisFin
             this.subMenuConta.Name = "subMenuConta";
             this.subMenuConta.Size = new System.Drawing.Size(180, 34);
             this.subMenuConta.Text = "Conta";
+            this.subMenuConta.Click += new System.EventHandler(this.subMenuConta_Click);
             // 
             // toolsMenu
             // 

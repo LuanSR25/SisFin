@@ -30,15 +30,15 @@ namespace SisFin
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.chkStatus = new System.Windows.Forms.CheckBox();
+            this.dgConta = new System.Windows.Forms.DataGridView();
             this.CboCategoria = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConta)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,12 +51,12 @@ namespace SisFin
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(293, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtNome.Location = new System.Drawing.Point(12, 50);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(293, 23);
+            this.txtNome.TabIndex = 1;
             // 
             // label2
             // 
@@ -79,12 +79,12 @@ namespace SisFin
             this.label3.TabIndex = 3;
             this.label3.Text = "Categoria";
             // 
-            // textBox2
+            // txtDescricao
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(760, 23);
-            this.textBox2.TabIndex = 4;
+            this.txtDescricao.Location = new System.Drawing.Point(12, 118);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(760, 23);
+            this.txtDescricao.TabIndex = 4;
             // 
             // label4
             // 
@@ -95,25 +95,27 @@ namespace SisFin
             this.label4.Size = new System.Drawing.Size(0, 28);
             this.label4.TabIndex = 6;
             // 
-            // checkBox1
+            // chkStatus
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(704, 198);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(68, 24);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Status";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkStatus.AutoSize = true;
+            this.chkStatus.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chkStatus.Location = new System.Drawing.Point(704, 198);
+            this.chkStatus.Name = "chkStatus";
+            this.chkStatus.Size = new System.Drawing.Size(68, 24);
+            this.chkStatus.TabIndex = 7;
+            this.chkStatus.Text = "Status";
+            this.chkStatus.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgConta
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 228);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 174);
-            this.dataGridView1.TabIndex = 8;
+            this.dgConta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgConta.Location = new System.Drawing.Point(12, 228);
+            this.dgConta.Name = "dgConta";
+            this.dgConta.RowTemplate.Height = 25;
+            this.dgConta.Size = new System.Drawing.Size(776, 174);
+            this.dgConta.TabIndex = 8;
+            this.dgConta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgConta.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConta_RowEnter);
             // 
             // CboCategoria
             // 
@@ -130,18 +132,18 @@ namespace SisFin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 412);
             this.Controls.Add(this.CboCategoria);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.dgConta);
+            this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Name = "frmConta";
             this.Text = "frmConta";
             this.Load += new System.EventHandler(this.frmConta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,10 +155,11 @@ namespace SisFin
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox chkStatus;
+        private System.Windows.Forms.DataGridView dgConta;
         private System.Windows.Forms.ComboBox CboCategoria;
+        private System.Windows.Forms.TextBox txtNome;
     }
 }

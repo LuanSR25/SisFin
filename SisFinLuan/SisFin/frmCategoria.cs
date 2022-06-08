@@ -227,5 +227,10 @@ namespace SisFin
         {
 
         }
+
+        private void grpCategoria_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
